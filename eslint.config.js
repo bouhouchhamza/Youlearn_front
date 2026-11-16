@@ -17,5 +17,13 @@ export default defineConfig([
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
+    rules: {
+      'no-restricted-imports': ['error', { paths: [{
+        name: 'react',
+        importNames: ['useEffect', 'useLayoutEffect', 'useReducer', 'useRef', 'useMemo', 'useCallback', 'useContext', 'useSyncExternalStore', 'use', 'useId', 'useTransition', 'useDeferredValue', 'useImperativeHandle', 'useInsertionEffect', 'useActionState', 'useOptimistic'],
+        message: 'Le brief autorise uniquement useState.',
+      }] }],
+    },
   },
+  { files: ['tests/**/*.mjs'], languageOptions: { globals: globals.node } },
 ])
